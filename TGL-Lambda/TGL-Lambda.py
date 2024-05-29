@@ -40,7 +40,7 @@ class DriverGUI(tk.Tk):
         self.agg = None
         self.final_day_results = {}
 
-        self.title("TrapModel GUI")
+        self.title("TGL-Lambda")
         self.geometry("500x700")
 
         # Create labels, entries, and buttons
