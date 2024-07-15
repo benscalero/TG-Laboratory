@@ -6,7 +6,7 @@ import random
 import numpy as np
 
 
-class TGDelimiter(tk.Tk):
+class TGLDelimiter(tk.Tk):
     def __init__(self):
         super().__init__()
         self.length = 0
@@ -14,7 +14,7 @@ class TGDelimiter(tk.Tk):
         self.lambdas = []
         self.output_file = None
 
-        self.title("TG Delimiter")
+        self.title("TGL Delimiter")
         self.geometry("400x200")
 
         self.label_density_list = tk.Label(self, text="List of Different Trap Densities:")
