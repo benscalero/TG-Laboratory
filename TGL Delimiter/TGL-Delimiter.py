@@ -16,12 +16,12 @@ class TGDelimiter(tk.Tk):
         self.units = 1000
 
         self.title("TG Delimiter")
-        self.geometry("400x200")
+        self.geometry("500x200")
 
-        self.label_units = tk.Label(self, text="Units (km or miles)")
+        self.label_units = tk.Label(self, text="Square size")
         self.entry_units = tk.Entry(self)
 
-        self.label_density_list = tk.Label(self, text="List of Different Trap Densities:")
+        self.label_density_list = tk.Label(self, text="List of Different Trap Densities (traps per square):")
         self.entry_density_list = tk.Entry(self)
 
         self.label_lambdas = tk.Label(self, text="List of Lambdas per Buffer:")
@@ -148,14 +148,14 @@ class TGDelimiter(tk.Tk):
         return new_traps
 
     def main(self):
-        if len(self.entry_units.get()):
-            if self.entry_units.get() == "km":
-                self.units = 1000
-            elif self.entry_units.get() == "miles":
-                self.units = 1609
-            else:
-                print("Sorry, please input an acceptable unit (km or miles).")
-                exit()
+        try:
+            # Convert the input to a number and validate
+            self.units = float(self.entry_units.get())
+            if self.units <= 0:
+                raise ValueError("Please input a positive number.")
+        except ValueError as e:
+            print(f"Error: {e}")
+            return
 
         if len(self.entry_density_list.get()):
             self.density_list = [float(x.strip()) for x in self.entry_density_list.get().strip('[]').split(', ')]
